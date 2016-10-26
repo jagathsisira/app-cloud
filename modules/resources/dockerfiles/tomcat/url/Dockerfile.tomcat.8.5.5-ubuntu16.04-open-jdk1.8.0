@@ -18,14 +18,14 @@
 #
 # ------------------------------------------------------------------------
 
-FROM gcr.io/google_containers/heapster_grafana:v2.6.0-2
+FROM wso2-cloud/tomcat:8.5.5-ubuntu16.04-open-jdk1.8.0
 
-WORKDIR /
-ADD run.sh /run.sh
-RUN chmod +x /run.sh
+ENV APP_WAR ARTIFACT_NAME
+ENV URL ARTIFACT_URL
+ENV WEB_APP_HOME $TOMCAT_HOME_DIR/webapps/
+ENV TOTAL_MEMORY VAL_TOTAL_MEMORY
+ENV TAIL_LOG ENABLE_TAIL_LOG
 
-RUN mkdir -p /mnt/grafana/certs
-ADD grafana.crt /mnt/grafana/certs/grafana.crt
-ADD grafana.key /mnt/grafana/certs/grafana.key
+RUN wget "$URL" -O "$WEB_APP_HOME$APP_WAR"
 
-
+CMD ["sh", "-c", "source /init.sh"]
