@@ -80,5 +80,5 @@ HttpMonitoringDashboardTypeUtil.prototype.getQueryString = function () {
 };
 
 ESBAnalyticsDashboardTypeUtil.prototype.getQueryString = function () {
-    return "?";
+    return "/t/" + tenantDomain + "/dashboards/esb-analytics/?shared=true";
 };
