@@ -52,8 +52,7 @@ jagg.template("home", function(inputs, outputs, jagg) {
     }
     var dashboardProperties = outputs.dashboardProperties;
     var dataAnalyticsServerUrl = outputs.dataAnalyticsServerUrl;
-    var modManager = jagg.module("manager");
-    var tenantDomain = modManager.getTenantDomain();
+    var tenantDomain = outputs.tenantDomain;
 %>
 
 <script>
